@@ -51,7 +51,7 @@ namespace ClassLibrary1
             //For<IBar>().Use<Bar>().Singleton();
 
             For<ISingle>().Use<S>().Singleton();
-            For<ILogger>().Use<Logger>().Transient();
+            For<ILogger>().Use<Logger>();
 
             Scan(cfg =>
             {
