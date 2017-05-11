@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Controllers;
@@ -51,8 +50,7 @@ namespace WebApi.StructureMap
 
         public static T GetService<T>(this HttpActionContext context)
         {
-            return context.Request.GetDependencyScope().GetService<T>(context, context.ActionDescriptor, context.ControllerContext,
-                context.ModelState);
+            return context.Request.GetDependencyScope().GetService<T>(context, context.ActionDescriptor, context.ControllerContext, context.ModelState);
         }
 
         private static T GetService<T>(this IDependencyScope scope, params object[] arguments)
@@ -60,6 +58,7 @@ namespace WebApi.StructureMap
             var container = scope.GetService<IContainer>();
             var explicitArguments = new ExplicitArguments();
             arguments.ForEach(x => explicitArguments.Set(x.GetType(), x));
+
             return container.GetInstance<T>(explicitArguments);
         }
 

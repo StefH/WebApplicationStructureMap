@@ -3,6 +3,19 @@ using StructureMap;
 
 namespace ClassLibrary1
 {
+    public interface ISingle
+    {
+        int Calc();
+    }
+
+    internal class S : ISingle
+    {
+        public int Calc()
+        {
+            return -1;
+        }
+    }
+
     public interface IBar
     {
         int Calc();
@@ -36,6 +49,9 @@ namespace ClassLibrary1
         {
             //For<IFoo>().Use<Foo>().Singleton();
             //For<IBar>().Use<Bar>().Singleton();
+
+            For<ISingle>().Use<S>().Singleton();
+            For<ILogger>().Use<Logger>().Transient();
 
             Scan(cfg =>
             {

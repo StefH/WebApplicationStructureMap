@@ -1,6 +1,5 @@
 ﻿using System.Web.Http;
 using ClassLibrary1;
-using StructureMap;
 using WebApi.StructureMap;
 
 namespace WebApplicationStructureMap
